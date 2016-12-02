@@ -7,11 +7,9 @@ class musicLibrary {
   }
 
   getLibDuration() {
-    let sumLengths = this.playListArr.reduce((a, b) => {
+    this.libDuration = this.playListArr.reduce((a, b) => {
       return { plDuration: a.plDuration + b.plDuration };
     }).plDuration;
-
-    this.libDuration = sumLengths;
   }
 
   addPlayList(pl) {
@@ -35,10 +33,9 @@ class Playlist {
   }
 
   getPlDuration() {
-    let sumLengths = this.tracksArr.reduce((a, b) => {
+    this.plDuration = this.tracksArr.reduce((a, b) => {
       return { trackLength: a.trackLength + b.trackLength };
     }).trackLength;
-    this.plDuration = sumLengths;
   }
 
   getPlRating() {
@@ -46,10 +43,9 @@ class Playlist {
       return { trackRating: a.trackRating + b.trackRating };
     }).trackRating;
     let countRatings = this.tracksArr.length;
-    this.plRating = sumRatings / countRatings || `Cannot find rating of playlist ${this.plName}`;
+    this.plRating = sumRatings / countRatings;
   }
 }
-
 
 class track {
   constructor(title, rating, length) {
@@ -76,5 +72,3 @@ ml.addPlayList(pl1);
 ml.addPlayList(pl2);
 
 console.log(ml.libDuration);
-
-
